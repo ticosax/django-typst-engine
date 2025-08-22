@@ -3,10 +3,21 @@
 A [Django] template engine that uses [Typst] to render Portable Document Format (PDF)
 files.
 
-## Configuration
+## Installation and Configuration
 
-To make the typst engine available, you need to add it to the `TEMPLATES` configuration
-in your `settings.py`. e.g.:
+The Django Typst engine is available from PyPI so you can install it with all the
+usual tools:
+
+```shell
+pip install django_typst
+# or
+uv add django_typst
+# or
+poetry add django_typst
+```
+
+Once installed, to make the typst engine available, you need to add it to the
+`TEMPLATES` configuration in your `settings.py`. e.g.:
 
 ```python
 TEMPLATES = [

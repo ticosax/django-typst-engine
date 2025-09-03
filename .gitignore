@@ -9,6 +9,7 @@ build/
 dist/
 htmlcov
 wheels/
+site/
 
 # Virtual environments
 .venv
@@ -16,3 +17,6 @@ wheels/
 
 # IDE specific
 .vscode
+
+# Dev configuration
+.env

@@ -1,6 +1,6 @@
 [project]
 name = "django-typst"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Django template engine powered by Typst"
 readme = "README.md"
 authors = [
@@ -31,7 +31,7 @@ requires-python = ">=3.11"
 dependencies = [
     "django>=5.2.0",
     "tomlkit>=0.13.3",
-    "typst==0.13.4", # 0.13.5 breaks compile from bytes
+    "typst<=0.13.7",
 ]
 
 [project.urls]
@@ -47,13 +47,12 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
-    "ipython>=9.4.0",
     "mypy[mypyc]>=1.17.1",
     "pytest>=8.4.1",
     "pytest-cov>=6.2.1",
     "pytest-django>=4.11.1",
     "pytest-spec>=5.0.0",
-    "ruff>=0.12.7",
+    "ruff>=0.12.11",
 ]
 
 [tool.mypy]

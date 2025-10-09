@@ -55,6 +55,12 @@ no alternative be provided.
 \* _The engine with use the folder the template is in as the root if one is not
 specified._
 
+> [!NOTE]
+> The Django Typst Engine does support loading templates from app dirs with the
+> `APP_DIR` configuration, but just like the jinja2 engine, it expects the in-app folder
+> to have an engine specific name of `typst`. So if you want to have templates in app
+> directories, please ensure they sit within a folder called `typst`.
+
 ## Usage
 
 To use this engine with one of the standard Django class based views you only need to

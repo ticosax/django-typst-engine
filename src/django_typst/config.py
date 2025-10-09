@@ -32,7 +32,7 @@ class TypstEngineConfig:
         font_paths = [pathlib.Path(p).resolve() for p in font_path_option]
 
         ignore_system_fonts = False
-        if options.get("INGORE_SYSTEM_FONTS") is True:
+        if options.get("IGNORE_SYSTEM_FONTS") is True:
             ignore_system_fonts = True
 
         pdf_standard = PdfStandard.PDF_1_7

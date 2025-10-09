@@ -35,7 +35,7 @@ def test_engine_raises_correct_exception_if_template_file_not_found(tmp_path):
     with pytest.raises(TemplateDoesNotExist) as exc_info:
         tengine.get_template("unobtainium.typ")
 
-    assert len(exc_info.value.tried) == 1
+    assert len(exc_info.value.tried) == 2  # template dir _and_ app typst dir
     dir_tried = exc_info.value.tried[0]
     assert dir_tried[0].name == str(template_dir / "unobtainium.typ")
 
@@ -51,13 +51,27 @@ def test_engine_can_find_template(tmp_path):
     tengine = engine.TypstEngine(
         params={
             "DIRS": [str(template_dirs[0]), str(template_dirs[1])],
-            "APP_DIRS": True,
+            "APP_DIRS": False,
         }
     )
 
     found = tengine.get_template("some.typ")
     assert isinstance(found, engine.TypstTemplate)
     assert found.origin.name == str(template_file)
+    assert found.config == tengine.config
+
+
+def test_engine_can_find_template_in_app_dir():
+    tengine = engine.TypstEngine(
+        params={
+            "DIRS": [],
+            "APP_DIRS": True,
+        }
+    )
+
+    found = tengine.get_template("app_dir_template.typ")
+    assert isinstance(found, engine.TypstTemplate)
+    assert found.origin.name.endswith("example_app/typst/app_dir_template.typ")
     assert found.config == tengine.config
 
 

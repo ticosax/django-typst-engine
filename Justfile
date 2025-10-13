@@ -1,3 +1,6 @@
+set dotenv-load := true
+set dotenv-filename := ".env"
+set export := true
 
 HERE := justfile_directory()
 VERSION := `awk -F\" '/^version/{print $2}' pyproject.toml`
@@ -10,11 +13,17 @@ PYTHON_VERSIONS := `awk -F'[^0-9]+' '/requires-python/{for(i=$3;i<$5;)printf(i-$
 [group('Build')]
 clean:
     rm -rf dist
+    rm -rf site
 
 # Build the library
 [group('Build')]
 build: clean
     uv build
+
+# Build docs
+[group('Build')]
+build-docs: clean
+    uv run mkdocs build
 
 
 # Static analysis
